@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import './App.css';
 
 import Header from '../Header/Header';
@@ -69,9 +69,10 @@ function App() {
 
           <Route path="/signup" element={<Register />} />
 
-          {/* <Navigation></Navigation> */}
 
-          <Route path="/*" element={<NotFound />} />
+          {/* Лля перенаправления с несуществующих страниц */}
+          <Route path="*" element={<Navigate to="/404" replace="true" />} />
+          <Route path="/404" element={<NotFound />} />
 
         </Routes>
 

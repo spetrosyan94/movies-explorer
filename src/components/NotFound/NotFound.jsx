@@ -6,6 +6,11 @@ function NotFound() {
 
   const navigate = useNavigate();
 
+  function goBack() {
+    navigate(-1);
+  }
+
+
   return (
     <main className="not-found">
       <section className="not-found__container">
@@ -16,7 +21,7 @@ function NotFound() {
       </section>
       <button className="not-found__btn-back"
         type="button"
-        onClick={() => navigate(-1)}
+        onClick={goBack}
       >Назад</button>
 
     </main>

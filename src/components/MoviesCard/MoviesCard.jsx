@@ -13,7 +13,7 @@ function MoviesCard() {
   return (
     <>
 
-      <li className="card__item"
+      <li className="card"
       >
         <img className="card__img" alt={`Постер фильма `} src={cardImage1} />
         <h3 className="card__title">33 слова о дизайне</h3>
@@ -23,10 +23,10 @@ function MoviesCard() {
           : <ButtonCardClose />
         }
 
-        <p className="card__paragraph">1ч 42м</p>
+        <p className="card__duration">1ч 42м</p>
       </li>
 
-      <li className="card__item"
+      <li className="card"
       >
         <img className="card__img" alt={`Постер фильма `} src={cardImage1} />
         <h3 className="card__title">33 слова о дизайне</h3>
@@ -36,10 +36,10 @@ function MoviesCard() {
           : <ButtonCardClose />
         }
 
-        <p className="card__paragraph">1ч 42м</p>
+        <p className="card__duration">1ч 42м</p>
       </li>
 
-      <li className="card__item"
+      <li className="card"
       >
         <img className="card__img" alt={`Постер фильма `} src={cardImage1} />
         <h3 className="card__title">33 слова о дизайне</h3>
@@ -49,10 +49,10 @@ function MoviesCard() {
           : <ButtonCardClose />
         }
 
-        <p className="card__paragraph">1ч 42м</p>
+        <p className="card__duration">1ч 42м</p>
       </li>
 
-      <li className="card__item"
+      <li className="card"
       >
         <img className="card__img" alt={`Постер фильма `} src={cardImage1} />
         <h3 className="card__title">33 слова о дизайне</h3>
@@ -62,10 +62,10 @@ function MoviesCard() {
           : <ButtonCardClose />
         }
 
-        <p className="card__paragraph">1ч 42м</p>
+        <p className="card__duration">1ч 42м</p>
       </li>
 
-      <li className="card__item"
+      <li className="card"
       >
         <img className="card__img" alt={`Постер фильма `} src={cardImage1} />
         <h3 className="card__title">33 слова о дизайне</h3>
@@ -75,10 +75,10 @@ function MoviesCard() {
           : <ButtonCardClose />
         }
 
-        <p className="card__paragraph">1ч 42м</p>
+        <p className="card__duration">1ч 42м</p>
       </li>
 
-      <li className="card__item"
+      <li className="card"
       >
         <img className="card__img" alt={`Постер фильма `} src={cardImage1} />
         <h3 className="card__title">33 слова о дизайне</h3>
@@ -88,10 +88,10 @@ function MoviesCard() {
           : <ButtonCardClose />
         }
 
-        <p className="card__paragraph">1ч 42м</p>
+        <p className="card__duration">1ч 42м</p>
       </li>
 
-      <li className="card__item"
+      <li className="card"
       >
         <img className="card__img" alt={`Постер фильма `} src={cardImage1} />
         <h3 className="card__title">33 слова о дизайне</h3>
@@ -101,7 +101,7 @@ function MoviesCard() {
           : <ButtonCardClose />
         }
 
-        <p className="card__paragraph">1ч 42м</p>
+        <p className="card__duration">1ч 42м</p>
       </li>
 
     </>

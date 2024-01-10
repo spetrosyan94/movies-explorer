@@ -1,6 +1,7 @@
 .movies {
   box-sizing: border-box;
   width: calc(300px + 408 * (100vw - 320px) / 448);
+  max-width: 1280px;
   margin: 0 auto;
 
 }

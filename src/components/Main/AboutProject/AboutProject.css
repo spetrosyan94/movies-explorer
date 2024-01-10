@@ -5,6 +5,7 @@
 
 .about-project__container {
   box-sizing: border-box;
+  max-width: 1280px;
   margin: 0 auto;
 
   /* Адаптивность паддингов */
@@ -62,7 +63,7 @@
 .about-project__paragraph {
   padding: 0;
   margin: 0;
-  margin-bottom: calc(56px + 37 * (100vw - 320px) / 448);
+  margin-bottom: calc(58px + 37 * (100vw - 320px) / 448);
   font-size: calc(11px + 1 * (100vw - 320px) / 448);
   font-weight: 400;
   line-height: 1.45;
@@ -71,10 +72,11 @@
 .about-project__progress-container {
   display: grid;
   grid-template-columns: 35% 1fr;
-  grid-template-rows: 36px 20px;
-  gap: 10px 0;
+  grid-template-rows: 35px 20px;
+  gap: 7px 0;
   justify-content: space-between;
-  margin-bottom: calc(69px + 21 * (100vw - 320px) / 448);
+  margin-top: 2px;
+  margin-bottom: calc(66px + 21 * (100vw - 320px) / 448);
 
   transition: all .5s ease;
 }
@@ -93,7 +95,7 @@
   align-items: center;
 }
 
-.about-project__progress-element__text {
+.about-project__text {
   padding: 0;
   margin: 0;
   text-align: center;
@@ -102,11 +104,11 @@
   line-height: normal;
 }
 
-.text_color_progress-bar_first {
+.about-project__text_color_second {
   color: #000;
 }
 
-.about-project__progress-element__caption {
+.about-project__caption {
   padding: 0;
   margin: 0;
   color: #A0A0A0;
@@ -145,11 +147,11 @@
     line-height: 1.5;
   }
 
-  .about-project__progress-element__caption {
+  .about-project__caption {
     font-size: 14px;
   }
 
-  .about-project__progress-element__text {
+  .about-project__text {
     font-size: 14px;
   }
 
@@ -174,7 +176,6 @@
   .about-project__container {
     width: 89%;
     min-width: 1140px;
-    max-width: none;
   }
 
   .about-project__paragraph {
@@ -182,7 +183,7 @@
     line-height: 1.42;
   }
 
-  .about-project__progress-element__caption {
+  .about-project__caption {
     font-weight: 500;
   }
 
