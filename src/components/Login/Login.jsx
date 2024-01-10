@@ -56,13 +56,6 @@ function Login() {
     evt.preventDefault();
     setIsEditForm(false);
     setInputChanges(false);
-
-    // Обновляем данные при отправке формы
-    prevRefInput.current = {
-      name: formInput.name,
-      email: formInput.email,
-    };
-
   }
 
   return (
@@ -130,7 +123,7 @@ function Login() {
           </div>
           <div className="login__btn-container">
 
-            <ButtonFormSubmit textButton="Зарегистрироваться"></ButtonFormSubmit>
+            <ButtonFormSubmit textButton="Войти"></ButtonFormSubmit>
 
             <p className="login__screen">Ещё не зарегистрированы?
               <Link to="/signup" className="login__link"> Регистрация</Link>

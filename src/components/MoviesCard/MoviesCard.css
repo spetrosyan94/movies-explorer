@@ -1,4 +1,4 @@
-.card__item {
+.card {
   display: grid;
   grid-template-areas:
     "img img"
@@ -6,9 +6,9 @@
     "text text";
 }
 
-/* Применение стилей к элементам, родитель которых card__item */
-.card__item .button-card-close,
-.card__item .button-like {
+/* Применение стилей к элементам, родитель которых card */
+.card .button-card-close,
+.card .button-like {
   grid-area: btn;
   justify-self: flex-end;
   align-self: center;
@@ -40,10 +40,11 @@
   line-height: normal;
 
   grid-area: title;
-  align-self: center;
+  align-self: flex-start;
+  padding-top: 5px;
 }
 
-.card__paragraph {
+.card__duration {
   padding: 0;
   margin: 0;
   color: #8B8B8B;
@@ -51,7 +52,6 @@
   font-weight: 400;
   line-height: normal;
 
-  margin-top: 25px;
   border-top: 1px solid #424242;
   padding-top: 6px;
 

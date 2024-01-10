@@ -11,8 +11,10 @@
 
 .login__container {
   height: 100%;
-  display: flex;
+  max-width: 1280px;
   margin: 0 auto;
+
+  display: flex;
   min-height: 316px;
   width: calc(260px + 136 * (100vw - 320px) / 448);
   flex-direction: column;
@@ -216,7 +218,7 @@
   .login__btn-edit:hover,
   .login__btn-exit:hover,
   .login__link:hover {
-    opacity: .7;
+    opacity: .8;
   }
 
 }

@@ -11,8 +11,10 @@
 
 .register__container {
   height: 100%;
-  display: flex;
+  max-width: 1280px;
   margin: 0 auto;
+
+  display: flex;
   min-height: 316px;
   width: calc(260px + 136 * (100vw - 320px) / 448);
   flex-direction: column;
@@ -140,7 +142,6 @@
   flex-direction: column;
   align-items: center;
   gap: 14px 0;
-  /* padding-bottom: 30px; */
 }
 
 .register__btn-edit {
@@ -228,9 +229,7 @@
     /* margin-bottom: 30px; */
   }
 
-  .register__form {
-    /* justify-content: flex-start; */
-  }
+  .register__form {}
 
   .register__btn-container {
     margin-top: calc(0px + 152 * (100vw - 576px) / 192);

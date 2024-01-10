@@ -11,9 +11,9 @@
   right: -500px;
   z-index: 5;
 
-  padding-left: calc(13px + 9 * (100vw - 320px) / 448);
-  padding-right: calc(13px + 9 * (100vw - 320px) / 448);
-  padding-top: calc(13px + 9 * (100vw - 320px) / 448);
+  padding-left: calc(17px + 9 * (100vw - 320px) / 448);
+  padding-right: calc(17px + 9 * (100vw - 320px) / 448);
+  padding-top: calc(17px + 9 * (100vw - 320px) / 448);
   padding-bottom: calc(46px + 49 * (100vw - 320px) / 448);
 
   transition: right .6s, visibility .6s;
@@ -38,7 +38,7 @@
   padding: 0;
   margin: 0;
 
-  padding-top: calc(99px + 6 * (100vw - 320px) / 448);
+  padding-top: calc(104px + 6 * (100vw - 320px) / 448);
   display: flex;
   flex-direction: column;
   align-items: center;

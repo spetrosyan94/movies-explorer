@@ -7,6 +7,7 @@
 .techs-container {
   box-sizing: border-box;
   width: 88.75%;
+  max-width: 1280px;
   margin: 0 auto;
 }
 
@@ -27,7 +28,7 @@
 .techs__subtitle {
   padding: 0;
   margin: 0;
-  margin-bottom: 24px;
+  margin-bottom: 25px;
   text-align: center;
   font-size: calc(30px + 20 * (100vw - 320px) / 448);
   font-weight: 400;
@@ -41,7 +42,7 @@
   padding: 0;
   margin: 0;
   margin: 0 auto;
-  margin-bottom: calc(24px + 59 * (100vw - 320px) / 448);
+  margin-bottom: calc(49px + 59 * (100vw - 320px) / 448);
   width: 90%;
 
   text-align: center;

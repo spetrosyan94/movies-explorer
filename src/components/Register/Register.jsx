@@ -136,7 +136,7 @@ function Register() {
               className="register__label"
               type="password"
             >
-              <span className="register__label-text">Пароль</span>
+              <span className="register__label-text">E-mail</span>
               <input
                 className={`register__input `}
                 // onChange={handleChange}

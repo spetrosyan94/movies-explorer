@@ -6,6 +6,7 @@
 .portfolio__container {
   box-sizing: border-box;
   width: 91.3%;
+  max-width: 1280px;
   margin: 0 auto;
 }
 
@@ -13,7 +14,7 @@
   padding: 0;
   margin: 0;
   padding-top: calc(70px + 20 * (100vw - 320px) / 448);
-  padding-bottom: calc(40px + 10 * (100vw - 320px) / 448);
+  padding-bottom: calc(42px + 10 * (100vw - 320px) / 448);
   font-feature-settings: 'clig' off, 'liga' off;
   font-size: calc(14px + 4 * (100vw - 320px) / 448);
   font-weight: 400;

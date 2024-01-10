@@ -50,13 +50,14 @@
   justify-self: center;
 
   position: fixed;
-  padding-bottom: 30px;
+  margin-bottom: 30px;
 
   color: #4285F4;
   text-align: center;
   font-size: calc(12px + 2 * (100vw - 320px) / 448);
   font-weight: 400;
   line-height: normal;
+  cursor: pointer;
 
   background-color: transparent;
 
@@ -64,6 +65,12 @@
   transition: all .3s ease;
 }
 
+
+@media (hover:hover) {
+  .not-found__btn-back:hover {
+    opacity: .7;
+  }
+}
 
 @media (min-width: 768px) {
 
