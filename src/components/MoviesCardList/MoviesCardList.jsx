@@ -10,6 +10,9 @@ import More from "../More/More";
 // Хук для определения ширины экрана
 import useResize from "../../hooks/useResize";
 
+// Константы
+import { SCREEN_SIZES, CARD_AMOUNTS, ADDED_CARD_AMOUNTS } from "../../utils/constants";
+
 function MoviesCardList(props) {
 
   const location = useLocation().pathname;
@@ -40,26 +43,26 @@ function MoviesCardList(props) {
 
   // Определяем количество карточек для отображения в зависимости от ширины экрана
   function updateVisibleCardsCount() {
-    let cardsToShow = 5;
+    let cardsToShow = CARD_AMOUNTS.BASE;
 
-    if (windowWidth >= 1280) {
-      cardsToShow = 16;
-    } else if (windowWidth >= 1055) {
-      cardsToShow = 9;
-    } else if (windowWidth >= 768) {
-      cardsToShow = 8;
+    if (windowWidth >= SCREEN_SIZES.DESKTOP) {
+      cardsToShow = CARD_AMOUNTS.LARGE;
+    } else if (windowWidth >= SCREEN_SIZES.TABLET) {
+      cardsToShow = CARD_AMOUNTS.MEDIUM;
+    } else if (windowWidth >= SCREEN_SIZES.MOBILE) {
+      cardsToShow = CARD_AMOUNTS.SMALL;
     }
     setVisibleCardsCount(cardsToShow);
   }
 
   // Функция для загрузки дополнительного количества карточек
   function loadMoreCards() {
-    let additionalCardsCount = 2;
+    let additionalCardsCount = ADDED_CARD_AMOUNTS.BASE;
 
-    if (windowWidth >= 1280) {
-      additionalCardsCount = 4;
-    } else if (windowWidth >= 1055) {
-      additionalCardsCount = 3;
+    if (windowWidth >= SCREEN_SIZES.DESKTOP) {
+      additionalCardsCount = ADDED_CARD_AMOUNTS.LARGE;
+    } else if (windowWidth >= SCREEN_SIZES.TABLET) {
+      additionalCardsCount = ADDED_CARD_AMOUNTS.MEDIUM;
     }
 
     const newVisibleCardsCount = visibleCardsCount + additionalCardsCount;

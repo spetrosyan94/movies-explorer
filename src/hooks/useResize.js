@@ -11,9 +11,11 @@ function useResize() {
         setWidth(window.innerWidth);
       }, 1000)
     };
-
+    // Добавляем слушателя события изменения размера окна
     window.addEventListener('resize', handleResize);
+
     return () => {
+      // Убираем слушателя события при размонтировании компонента
       window.removeEventListener('resize', handleResize)
     };
   }, [width]);

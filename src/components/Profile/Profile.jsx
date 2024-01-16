@@ -18,7 +18,17 @@ function Profile(props) {
   const [editForm, setIsEditForm] = React.useState(false);
 
   // Функция проверяет, совпадают ли значения инпутов с предыдущим, если да, кнопка сабмита отключена
-  const checkValueInput = !isValid || (currentUser.name === values.name && currentUser.email === values.email);
+  const checkValueInput =
+    !isValid ||
+    (values.name !== undefined && currentUser.name === values.name) ||
+    (values.email !== undefined && currentUser.email === values.email);
+
+
+  // Эффект сброса ошибок валидации полей формы при монтировании компонента
+  React.useEffect(() => {
+    resetValidation();
+  }, [resetValidation]);
+
 
   function editInputForm() {
     setIsEditForm(true);
@@ -61,7 +71,8 @@ function Profile(props) {
               <input
                 className={`profile__input `}
                 onChange={handleChange}
-                value={values.name || currentUser.name}
+                // value={values.name || currentUser.name}
+                value={values.name !== undefined ? values.name : currentUser.name}
                 disabled={!editForm}
                 name="name"
                 form="profile-form"
@@ -69,7 +80,6 @@ function Profile(props) {
                 required
                 minLength="2"
                 maxLength="30"
-                pattern='^[а-яА-Яa-zA-Z0-9]+$'
                 placeholder="Введите новое имя"
               />
               <span className="profile__error">{errors.name || ''}</span>
@@ -84,7 +94,8 @@ function Profile(props) {
               <input
                 className={`profile__input `}
                 onChange={handleChange}
-                value={values.email || currentUser.email}
+                // value={values.email || currentUser.email}
+                value={values.email !== undefined ? values.email : currentUser.email}
                 disabled={!editForm}
                 name="email"
                 form="profile-form"

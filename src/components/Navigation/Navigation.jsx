@@ -6,25 +6,14 @@ import AuthMenu from "../AuthMenu/AuthMenu";
 import AccountMenu from "../AccountMenu/AccountMenu";
 import MoviesMenu from "../MoviesMenu/MoviesMenu";
 
+// Хук для определения ширины экрана
+import useResize from "../../hooks/useResize";
+
 function Navigation(props) {
 
-  const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
+  // Хук для определения ширины экрана
+  const windowWidth = useResize();
 
-  React.useEffect(() => {
-    // Обработчик изменения размера окна
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
-    // Добавляем слушателя события изменения размера окна
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      // Убираем слушателя события при размонтировании компонента
-      window.removeEventListener('resize', handleResize);
-    }
-    // Пустой массив зависимостей означает, что эффект будет выполняться только при монтировании и размонтировании компонента
-  }, []);
 
   return (
     <>

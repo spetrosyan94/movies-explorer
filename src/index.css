@@ -2,11 +2,18 @@
 
 @import url(../src/vendor/fonts/fonts.css);
 
-/* Плавное изменение всех свойств элементов
-* {
-  transition: all 0.5s ease;
-} */
+/* Отключение вертикального скролла */
+.no-scroll {
+  overflow-y: hidden;
+}
 
+/* Переход для открытия попапа */
+.transition_opened {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Плавное изменение всех свойств элементов */
 .smooth-transition {
   transition: all .5s ease;
 }

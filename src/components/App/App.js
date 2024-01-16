@@ -19,11 +19,14 @@ import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
 
+//Импорт модального окна
+import InfoTooltip from '../InfoTooltip/InfoTooltip';
+
 // Импорт контекста
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import { MoviesProvider } from '../../contexts/MoviesContext';
 
-import { getLocalStorage, correctMovies } from '../../utils/utils';
+import { getLocalStorage, correctMovies, usePopupClose, noScrollToggle } from '../../utils/utils';
 
 // Импорт API
 import { register, login, signOut } from '../../utils/Auth';
@@ -47,15 +50,17 @@ function App() {
   // Инициализация состояния loggedIn на основе наличия токена
   const [loggedIn, setLoggedIn] = React.useState(!!token);
   const [loading, setLoading] = React.useState(false);
-  // const [isRegister, setIsRegister] = React.useState(null);
   const [currentUser, setCurrentUser] = React.useState({});
+  const [isRegister, setIsRegister] = React.useState(false);
   const [openBurgerMenu, setOpenBurgerMenu] = React.useState(false);
+  const [isInfoTooltip, setisInfoTooltip] = React.useState(false);
 
   const [errorInfo, setErrorInfo] = React.useState(null);
 
   // Переменная открытого попапа или меню
   const isOpen =
-    openBurgerMenu;
+    openBurgerMenu ||
+    isInfoTooltip;
 
 
   // Эффект получения данных пользователя и фильмов при монтировании компонента
@@ -77,6 +82,14 @@ function App() {
     }
   }, [token, loggedIn]);
 
+  // Эффект отключения скролла при открытом попапе
+  React.useEffect(() => {
+    noScrollToggle(isOpen);
+  }, [isOpen]);
+
+
+  // Закрытие попапа при клике по оверлэю или на кнопку Esc
+  usePopupClose(isOpen, closeAllPopups);
 
   // Обработчик для регистрации нового пользователя
   function handleRegister(data) {
@@ -139,11 +152,14 @@ function App() {
     setLoading(true);
     patchUser(name, email)
       .then(() => {
-        setCurrentUser({ name, email })
+        setIsRegister(true);
+        handleisInfoTooltip();
+        setCurrentUser({ name, email });
       })
       .catch((err) => {
         console.log(err);
         setErrorInfo(err);
+        handleisInfoTooltip()
       })
       .finally(() => {
         setLoading(false);
@@ -153,11 +169,16 @@ function App() {
   // Закрыть все попапы
   function closeAllPopups() {
     setOpenBurgerMenu(false);
+    setisInfoTooltip(false)
     setErrorInfo(null);
   }
 
   function handleOpenBurgerMenu() {
     setOpenBurgerMenu(true);
+  }
+
+  function handleisInfoTooltip() {
+    setisInfoTooltip(true);
   }
 
   // Запрос на получение фильмов с API
@@ -221,8 +242,6 @@ function App() {
   function checkLikeMovies(movie) {
     return savedMovies.some((savedMovies) => savedMovies.movieId === movie.movieId);
   }
-
-  // console.log(handleSearchMovies(getLocalMovies(), 'я', true));
 
 
   return (
@@ -288,9 +307,35 @@ function App() {
               }
             />
 
-            <Route path="/signin" element={<Login onLogin={handleLogin} isError={errorInfo} setErrorInfo={setErrorInfo} loading={loading} />} />
+            <Route
+              path="/signin"
+              element={
+                <ProtectedRoute
+                  element={Login}
+                  onLogin={handleLogin}
+                  loggedIn={!loggedIn}
+                  redirectPath="/movies"
+                  isError={errorInfo}
+                  setErrorInfo={setErrorInfo}
+                  loading={loading}
+                />
+              }
+            />
 
-            <Route path="/signup" element={<Register onRegister={handleRegister} isError={errorInfo} setErrorInfo={setErrorInfo} loading={loading} />} />
+            <Route
+              path="/signup"
+              element={
+                <ProtectedRoute
+                  element={Register}
+                  loggedIn={!loggedIn}
+                  redirectPath="/movies"
+                  onRegister={handleRegister}
+                  isError={errorInfo}
+                  setErrorInfo={setErrorInfo}
+                  loading={loading}
+                />
+              }
+            />
 
 
             {/* Лля перенаправления с несуществующих страниц */}
@@ -305,6 +350,12 @@ function App() {
             isOpen={openBurgerMenu}
             onClose={closeAllPopups}
           ></BurgerMenu>
+
+          <InfoTooltip
+            isOpen={isInfoTooltip}
+            onClose={closeAllPopups}
+            isRegister={isRegister}
+          />
 
           {loading && <Preloader />}
 

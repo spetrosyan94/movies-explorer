@@ -16,8 +16,7 @@ function Login(props) {
   // Эффект сброса ошибок валидации полей формы при монтировании компонента
   React.useEffect(() => {
     resetValidation();
-  }, [resetValidation])
-
+  }, [resetValidation]);
 
   // При размонтировании компонента информация об ошибках очищается
   React.useEffect(() => {

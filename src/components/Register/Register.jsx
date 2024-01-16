@@ -1,11 +1,12 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import './Register.css';
 
 import Logo from "../Logo/Logo";
 import ButtonFormSubmit from "../ButtonFormSubmit/ButtonFormSubmit";
+
+// Хук валидации формы
 import useFormWithValidation from "../../hooks/useFormWithValidation";
-import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function Register(props) {
 
@@ -62,7 +63,6 @@ function Register(props) {
                 required
                 minLength="2"
                 maxLength="30"
-                pattern="^[a-zA-Zа-яА-Я\s\-]+$"
                 placeholder="Введите имя"
               ></input>
               <span className="register__error">{errors.name || ''}</span>
