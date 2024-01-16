@@ -1,4 +1,3 @@
-import React from "react";
 import { BASE_URL_MOVIES } from "./constants";
 
 // Метод получения данныъ из локального хранилища браузера
