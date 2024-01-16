@@ -19,6 +19,22 @@
   transition: opacity .3s ease;
 }
 
+.card__link {
+  grid-area: img;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  text-decoration: none;
+
+  transition: all .3s ease;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.card__link:active {
+  transform: scale(.95);
+}
+
 .card__img {
   width: 100%;
   /* height: calc(169px + 21 * (100vw - 320px) / 448); */
@@ -60,6 +76,10 @@
 
 @media (hover: hover) {
   .card__btn-like:hover {
+    opacity: .7;
+  }
+
+  .card__link:hover {
     opacity: .7;
   }
 }

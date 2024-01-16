@@ -63,6 +63,7 @@
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  position: relative;
 }
 
 /* .login__label[type='email'] {
@@ -109,14 +110,6 @@
   border-bottom: 1px solid #4285F4;
 }
 
-.login__input_error:focus {
-  border-right: 1px solid #ee3465;
-}
-
-.login__input_error {
-  color: #ee3465;
-}
-
 .login__error {
   font-weight: 400;
   font-size: 10px;
@@ -124,25 +117,26 @@
   color: #ee3465;
   position: absolute;
   left: auto;
-  bottom: -16px;
+  bottom: -25px;
+  z-index: 5;
+
+  transition: all .3s ease;
 }
 
-.login__error-name {
-  font-weight: 400;
-  font-size: 10px;
-  line-height: 1.2;
-  color: #ee3465;
-  position: absolute;
-  left: auto;
-  bottom: 20px;
+.login__label[type="email"] .login__error {
+  bottom: -15px;
 }
+
+.login__btn-container .login__error {
+  bottom: 78px;
+}
+
 
 .login__btn-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 14px 0;
-  /* padding-bottom: 30px; */
 }
 
 .login__btn-edit {
@@ -230,12 +224,12 @@
     /* margin-bottom: 30px; */
   }
 
-  .login__form {
-    /* justify-content: flex-start; */
-  }
-
   .login__btn-container {
     margin-top: calc(0px + 152 * (100vw - 576px) / 192);
+  }
+
+  .login__label[type="password"] .login__error {
+    bottom: -15px;
   }
 }
 

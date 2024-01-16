@@ -1,71 +1,33 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import './Register.css';
 
 import Logo from "../Logo/Logo";
 import ButtonFormSubmit from "../ButtonFormSubmit/ButtonFormSubmit";
+import useFormWithValidation from "../../hooks/useFormWithValidation";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
-import { Link } from "react-router-dom";
 
-function Register() {
+function Register(props) {
 
-  const currentUser = useContext(CurrentUserContext);
+  const { values, errors, isValid, handleChange, resetValidation } = useFormWithValidation();
 
-  const [formInput, setFormInput] = React.useState({
-    name: "Алеша",
-    email: "alesha@bk.ru"
-  });
+  // Эффект сброса ошибок валидации полей формы при монтировании компонента
+  React.useEffect(() => {
+    resetValidation();
+  }, [resetValidation])
 
-  // Стейт кнопки редактирования инпутов в формы
-  const [editForm, setIsEditForm] = React.useState(false);
-  // Стейт новых введенных данных в инпуте. Если данные прошлые, кнопка самбит будет выключена
-  const [inputChanges, setInputChanges] = React.useState(false);
-  // Объект useRef охраняет значения инпутов для сравнения при вводе новых значений
-  const prevRefInput = React.useRef({
-    name: formInput.name,
-    email: formInput.email,
-  });
+  // При размонтировании компонента информация об ошибках очищается
+  React.useEffect(() => {
 
-
-  // Вносим полученные изменения с инпутов в стейт данных формы
-  function handleInputChange(name, value) {
-    setFormInput(prevFormInput => ({
-      ...prevFormInput,
-      [name]: value
-    }));
-  };
-
-  // Функция проверяет, совпадают ли значения инпутов с предыдущим, если да, кнопка сабмита отключена
-  function checkValueInput(name, value) {
-    if (prevRefInput.current[name] !== value) {
-      setInputChanges(true);
-    } else {
-      setInputChanges(false);
+    return () => {
+      props.setErrorInfo(null);
     }
-  }
-
-  // Получаем данные с каждого инпута используя деструктуризацию evt.target
-  function handleChange(evt) {
-    const { name, value } = evt.target;
-    handleInputChange(name, value);
-    checkValueInput(name, value);
-  };
-
-  function editInputForm() {
-    setIsEditForm(true);
-  }
+  }, []);
 
   // Обработчик самбита формы
   function handleSubmit(evt) {
     evt.preventDefault();
-    setIsEditForm(false);
-    setInputChanges(false);
-
-    // Обновляем данные при отправке формы
-    prevRefInput.current = {
-      name: formInput.name,
-      email: formInput.email,
-    };
-
+    props.onRegister(values);
   }
 
   return (
@@ -93,21 +55,18 @@ function Register() {
               <input
                 className={`register__input `}
                 onChange={handleChange}
-                value={formInput.name}
+                value={values.name || ""}
                 name="name"
                 form="register-form"
-                // className={`register__input ${errors.name && 'register__input_error'}`}
                 type="text"
                 required
                 minLength="2"
                 maxLength="30"
-                pattern={'^[а-яА-Яa-zA-Z0-9]+$'}
+                pattern="^[a-zA-Zа-яА-Я\s\-]+$"
                 placeholder="Введите имя"
               ></input>
+              <span className="register__error">{errors.name || ''}</span>
             </label>
-
-            {/* <span className="register__error-name">{errors.name || ''}</span> */}
-            <span className="register__error-name"> </span>
 
 
             <label
@@ -118,66 +77,56 @@ function Register() {
               <input
                 className={`register__input `}
                 onChange={handleChange}
-                value={formInput.email}
+                value={values.email || ""}
                 name="email"
                 form="register-form"
-                // className={`register__input ${errors.email && 'register__input_error'}`}
                 type="email"
                 required
                 placeholder="Введите почту"
               />
+              <span className="register__error">{errors.email || ''}</span>
             </label>
-
-            {/* <span className="register__error">{errors.email || ''}</span> */}
-            <span className="register__error-name"> </span>
 
 
             <label
               className="register__label"
               type="password"
             >
-              <span className="register__label-text">E-mail</span>
+              <span className="register__label-text">Пароль</span>
               <input
                 className={`register__input `}
-                // onChange={handleChange}
-                // value={formInput.email}
+                onChange={handleChange}
+                value={values.password || ""}
                 name="password"
                 form="register-form"
-                // className={`register__input ${errors.email && 'register__input_error'}`}
                 type="password"
                 required
+                minLength="6"
+                maxLength="30"
                 placeholder="Введите пароль"
               />
+              <span className="register__error">{errors.password || ''}</span>
             </label>
 
-            {/* <span className="register__error">{errors.email || ''}</span> */}
-            <span className="register__error-name"> </span>
 
           </div>
           <div className="register__btn-container">
 
-            <ButtonFormSubmit textButton="Зарегистрироваться"></ButtonFormSubmit>
+            <span className="register__error">{props.isError || ''}</span>
+            <ButtonFormSubmit
+              textButton={props.loading ? "Регистрация..." : "Зарегистрироваться"}
+              disabled={!isValid}
+            />
 
             <p className="register__screen">Уже зарегистрированы?
               <Link to="/signin" className="register__link"> Войти</Link>
             </p>
 
 
-            {/* {editForm
-              ? <ButtonFormSubmit disabled={!inputChanges} textButton="Зарегистрироваться"></ButtonFormSubmit>
-              : <>
-                <button className="register__btn-edit" type="button" onClick={editInputForm}>Редактировать</button>
-                <button className="register__btn-exit" type="button">Выйти из аккаунта</button>
-              </>
-            } */}
-
           </div>
         </form>
 
-
-
       </section>
-
 
     </main >
 

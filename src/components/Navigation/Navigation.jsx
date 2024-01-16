@@ -29,17 +29,22 @@ function Navigation(props) {
   return (
     <>
       <nav className="navigation">
-
-        {windowWidth >= 956
-          ? (
+        {windowWidth >= 956 ? (
+          <>
+            {props.loggedIn
+              ? <>
+                <MoviesMenu />
+                <AccountMenu />
+              </>
+              : <AuthMenu />}
+          </>
+        )
+          : (
             <>
-              <MoviesMenu></MoviesMenu>
-              {props.loggedIn ? <AccountMenu></AccountMenu> : <AuthMenu></AuthMenu>}
+              {props.loggedIn && <ButtonBurger onClick={props.isOpenBurgerMenu} />}
+              {!props.loggedIn && <AuthMenu />}
             </>
-          )
-          : <ButtonBurger onClick={props.isOpenBurgerMenu} />
-        }
-
+          )}
       </nav>
     </>
   )

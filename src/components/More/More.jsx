@@ -8,7 +8,13 @@ function More(props) {
   return (
     <section className="more">
 
-      {!props.savedMovies && <button className="more__button" type="button" aria-label="Кнопка показать еще фильмы">Ещё</button>
+      {!props.savedMovies &&
+        <button
+          className="more__button"
+          onClick={props.onClick}
+          type="button"
+          aria-label="Кнопка показать еще фильмы"
+        >Ещё</button>
       }
     </section>
   )

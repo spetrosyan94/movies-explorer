@@ -3,7 +3,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  /* gap: 0 14px; */
+  margin-left: auto;
   column-gap: calc(14px + 16 * (100vw - 320px) / 448);
 }
 

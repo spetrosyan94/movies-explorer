@@ -2,12 +2,19 @@ import React from "react";
 import './FilterCheckbox.css';
 
 
-function FilterCheckbox() {
+function FilterCheckbox(props) {
 
 
   return (
     <label className="filter-checkbox smooth-transition">Короткометражки
-      <input className="filter-checkbox__toggle" type="checkbox" form="search-form" name="toggle-checkbox"></input>
+      <input
+        className="filter-checkbox__toggle"
+        type="checkbox"
+        form="search-form"
+        name="toggle-checkbox"
+        checked={props.shortFilm}
+        onChange={props.toggleShortMovies}
+      />
       <span className="filter-checkbox__track"></span>
     </label>
 
