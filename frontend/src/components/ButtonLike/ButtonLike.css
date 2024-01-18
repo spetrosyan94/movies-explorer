@@ -1,0 +1,58 @@
+@keyframes smoothSpring {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  10%,
+  50%,
+  70%,
+  90% {
+    transform: scale(0.9);
+  }
+
+  20%,
+  60%,
+  80% {
+    transform: scale(1.1);
+  }
+}
+
+.button-like {
+  padding: 0;
+  margin: 0;
+  border: none;
+
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: #313131;
+  background-image: url(../../images/svg/btn-like-inactive.svg);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 10px 8.5px;
+
+  width: 24px;
+  height: 24px;
+
+  opacity: 1;
+  /* transition: all .3s ease; */
+  transition:
+    opacity .3s ease,
+    transform 0.4s cubic-bezier(0.55, 0.055, 0.675, 0.19)
+}
+
+.button-like_active {
+  background-image: url(../../images/svg/btn-like-active.svg);
+  background-position: 50% 50%;
+}
+
+.button-like_pressed {
+  animation: smoothSpring 1s ease-in 1;
+}
+
+@media (hover: hover) {
+  .button-like:hover {
+    opacity: .7;
+  }
+}
