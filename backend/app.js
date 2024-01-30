@@ -24,7 +24,7 @@ app.use(cors({
   credentials: true,
   maxAge: 30, // Кэширование preFlight запросов
   origin: [
-    'http://localhost:3001',
+    'http://localhost:3000',
     'http://movies.petrosyan.nomoredomainsmonster.ru',
     'https://movies.petrosyan.nomoredomainsmonster.ru'],
 }));
@@ -35,8 +35,8 @@ app.options('*', cors()); // Обрабатывает предварительн
 
 app.use(helmet()); // Помогает защитить приложение от некоторых
 // широко известных веб-уязвимостей путем соответствующей настройки заголовков HTTP
-app.use(express.json()); // для собирания JSON-формата
-app.use(cookieParser()); // парсер куки
+app.use(express.json()); // Обработка входящих запросов с телом в формате JSON
+app.use(cookieParser()); // Функциональность для работы с парсингом куки (cookie) в запросах
 
 // логгер запросов
 app.use(requestLogger);

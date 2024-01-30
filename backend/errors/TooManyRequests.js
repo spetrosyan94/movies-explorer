@@ -3,4 +3,6 @@ class TooManyRequests extends Error {
     super(message);
     this.statusCode = 429;
   }
-} module.exports = TooManyRequests;
+}
+
+module.exports = TooManyRequests;
